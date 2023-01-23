@@ -1,0 +1,39 @@
+service: serverless-mongodb
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-2
+  timeout: 15
+
+functions:
+  create:
+    handler: handler/handler.create
+    events:
+      - http:
+          path: /create
+          method: post
+          cors: true
+  
+  getNotes:
+    handler: handler/handler.getNotes
+    events:
+      - http:
+          path: /getNotes
+          method: get
+          cors: true
+
+  getOne:
+    handler: handler/handler.getOne
+    events:
+      - http:
+          path: /getOne/{id}
+          method: get
+          cors: true
+
+
+plugins:
+  - serverless-offline

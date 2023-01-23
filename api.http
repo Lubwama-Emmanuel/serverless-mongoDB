@@ -1,0 +1,13 @@
+@host = http://localhost:3000/dev
+
+POST {{host}}/create
+
+Content-Type: application/json
+
+{
+    "note": "note 4"
+}
+
+###
+
+GET {{host}}/getNotes
